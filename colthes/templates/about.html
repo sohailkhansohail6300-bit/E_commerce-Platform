@@ -1,0 +1,37 @@
+{% extends "header_footer.html" %}
+{% block base %}
+{% load static %}
+  <link rel="stylesheet" href="{% static 'about.css' %}" >
+<div class="hero">
+    <div class="hero-content">
+        <h1>Welcome to StyleCrafted</h1>
+        <p>Where fashion meets your personality.</p>
+    </div>
+</div>
+
+<!-- ABOUT CARD -->
+<div class="about-section">
+    <h2>Define Your Style</h2>
+    <p>
+        At <strong>StyleCrafted</strong>, we bring fashion crafted around *you*.  
+        Discover curated styles, the latest trends, and looks that reflect your true personality.  
+        We believe fashion is not just clothing — it’s your identity, your attitude, your art.
+    </p>
+
+    <div class="features">
+        <div class="feature">
+            <h3>Trendy</h3>
+            <p>Stay ahead with the freshest looks and runway-inspired outfits.</p>
+        </div>
+        <div class="feature">
+            <h3>Personalized</h3>
+            <p>Explore styles that fit your mood, your vibe, and your lifestyle.</p>
+        </div>
+        <div class="feature">
+            <h3>Unique</h3>
+            <p>Crafted fashion that lets you stand out — unapologetically.</p>
+        </div>
+    </div>
+</div>
+{% endblock base %}
+

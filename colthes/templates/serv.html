@@ -1,0 +1,44 @@
+{% extends "header_footer.html" %}
+{% block base %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'serv.css' %}">
+
+<!-- HERO SECTION -->
+<div class="services-hero">
+    <div class="hero-text">
+        <h1>Our Services</h1>
+        <p>Crafted to elevate your style and fashion experience.</p>
+    </div>
+</div>
+
+<!-- SERVICES SECTION -->
+<div class="services-section">
+    <h2>What We Offer</h2>
+
+    <div class="service-cards">
+
+      
+
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80" alt="">
+            <h3>Trend Insights</h3>
+            <p>Stay updated with the latest fashion trends from global runways, influencers, and designers.</p>
+        </div>
+
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=900&q=80" alt="">
+            <h3>Wardrobe Revamp</h3>
+            <p>We help you transform your wardrobe with essential picks, outfit planning, and seasonal upgrades.</p>
+        </div>
+
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=900&q=80" alt="">
+            <h3>Custom Lookbooks</h3>
+            <p>Get personalized digital lookbooks designed for events, daily wear, or your unique fashion journey.</p>
+        </div>
+
+    </div>
+</div>
+
+{% endblock base %}

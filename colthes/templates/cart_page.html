@@ -1,0 +1,104 @@
+{% extends "header_footer.html" %}
+{% block base %}
+{% load static %}
+  <link rel="stylesheet" href="{% static 'cart_page.css' %}" />
+
+{% comment %} <center> {% endcomment %}
+<div class="cart-item">
+    <div id='items'>
+    <img src="{{ i.image.url }}" alt="{{ i.cloth_name }}">
+    <center>
+    <div class="item-details">
+        <div class="item-name">Name: {{ i.cloth_name }}</div>
+        <div class="fashion-name">Fashion: {{ i.fashion_name }}</div>
+        <div class="item-price">Pric$: {{ i.price }}</div>
+    </div>
+</center>
+    </div>
+    
+
+    <form class="cart-form" method='post'>
+        {% csrf_token %}
+        {% if error %}
+        <p Style='color:red'>{{error}}</p>
+        {% endif %}
+        <label for="qty">Quantity</label>
+        <input type="number" id="qty" name="qty" value="1" min="1">
+        <input type="hidden" name="form_type" value="order">
+
+        <label for="qty">Product_name</label>
+        <input type="text" id="qty" name="cloth_name" placeholder='Enter your Cloth_name'>
+
+        <label for="size">Size</label>
+        <select id="size" name="size">
+            <option value="S">Small</option>
+            <option value="M" selected>Medium</option>
+            <option value="L">Large</option>
+            <option value="XL">XL</option>
+        </select>
+
+        <label for="color">Color</label>
+        <input type="text" id="color" name="color" placeholder="Enter color">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="example@email.com">
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="+1 234 567 890">
+
+        <label for="address">Address</label>
+        <textarea id="address" name="address" rows="3" placeholder="Enter your address"></textarea>
+
+        <button type="submit">Proceed to Checkout</button>
+    </form>
+</div>
+{% comment %} </center> {% endcomment %}
+
+<br>
+<br>
+<h1 class="main-title">Customer Reviews</h1>
+
+<!-- ⭐ Review Cards -->
+<div class="">
+    <div class="review-container">
+
+      {% if reviews %}
+       {% for i in reviews %}
+       
+       
+        <div class="review-card">
+            <div class="stars">{{i.rating}}</div>
+            <div class="review-user">{{i.user.username}}</div>
+            <br>
+            <p class="review-info">{{i.info}}</p>
+          
+        </div>
+        {% empty %}
+        <p>there is no review</p>
+
+        {% endfor %}
+        {% endif %}
+
+       
+
+    </div>
+</div>
+
+<!-- ⭐ Customer Review Form -->
+<div class="form-section1">
+    <h2 class="form-title">Add Your Experience</h2>
+
+    <form method='post' >
+        {% csrf_token %}
+        <div class="input-box">
+            <label>Your Experience</label>
+            <input type="hidden" name="form_type" value="review">
+            <textarea class='input' name='info' placeholder="Write your review..." required></textarea>
+        </div>
+
+        <button class="submit-btn">Submit Review</button>
+    </form>
+</div>
+<br>
+<br>
+{% endblock base %}

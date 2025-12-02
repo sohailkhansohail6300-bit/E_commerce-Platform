@@ -1,0 +1,114 @@
+{% extends "header_footer.html" %}
+{% block base %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'user_seller.css' %}" />
+
+    <div class="container">
+        <div class="header">
+            <h1>Seller Dashboard</h1>
+            <p>Welcome, Seller! Manage your clothing inventory here.</p>
+        </div>
+        <div class="dashboard">
+            <div class="sidebar">
+                <h3>Menu</h3>
+                <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Add Product</a></li>
+                    <li><a href="#">Orders</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="{% url 'home' %}">Logout</a></li>
+                </ul>
+            </div>
+            <div class="main-content">
+               
+
+                
+    <h2>Add New Fashion Product</h2>
+
+  <div class="fex">
+    <!-- Product Form -->
+    <form method="POST" enctype="multipart/form-data" id="form">
+      {% csrf_token %}
+       {% if error %}
+        <p Style='color:red'>{{error}}</p>
+        {% endif %}
+      <label for="image">Upload Image</label>
+      <input type="file" id="image" name="image" accept="image/*" required />
+
+      <label for="cloth_name">Product Name</label>
+      <input type="text" id="cloth_name" name="cloth_name" placeholder="Enter cloth name" required />
+
+      <label for="fashion_name">Fashion Name</label>
+      <input type="text" id="fashion_name" name="fashion_name" placeholder="Enter fashion name" required />
+
+      <label for="price">Price (PKR)</label>
+      <input type="number" id="price" name="price" placeholder="Enter price" min="0" step="0.01" required />
+
+      <button type="submit" class="submit-btn">Add Product</button>
+    </form>
+
+    <!-- Product Policy -->
+    <div class="policy">
+      <h3>🛍️ Product Policy</h3>
+      <p>
+        All listed products must be original and follow our quality standards.
+        Uploaded images should clearly represent the actual product without misleading edits.
+        Prices must include all applicable taxes and shipping costs.
+        Once submitted, your product will be reviewed before being published on the store.
+      </p>
+      <p>
+        By submitting this form, you agree to comply with our authenticity and refund policies.
+        Any violation may result in product removal or account suspension.
+      </p>
+    </div>
+  </div>
+
+
+                <h2>Your Products</h2>
+                <div class="product-grid">
+                    <!-- Example Product Card -->
+                     {% for i in i %}
+                     
+                     
+                    <div class="product-card">
+                        <img src="{{ i.image.url }}" alt="Clothing Item">
+                        <div class="product-info">
+                            <h3>{{ i.cloth_name }}</h3>
+                            <p>{{ i.fashion_name }}</p>
+                            <p class="price">{{ i.price }}</p>
+                            <button>Edit Product</button>
+                        </div>
+                    </div>
+                {% endfor %}
+                    <!-- Add more product cards dynamically via Django template -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<h2>Orders for Your Products</h2>
+
+{% if order %}
+    <div class="orders-container">
+        {% for o in order %}
+            <div class="order-card">
+                <h3>Product: {{ o.relation.cloth_name }}</h3>
+                <p><strong>Quantity:</strong> {{ o.quantity }}</p>
+                <p><strong>Size:</strong> {{ o.size }}</p>
+                <p><strong>Color:</strong> {{ o.color }}</p>
+                <p><strong>Email:</strong> {{ o.email }}</p>
+                <p><strong>Phone:</strong> {{ o.phone }}</p>
+                <p><strong>Address:</strong> {{ o.address }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="no-orders">No orders yet for your products.</p>
+{% endif %}
+
+
+ 
+{% endblock base %}

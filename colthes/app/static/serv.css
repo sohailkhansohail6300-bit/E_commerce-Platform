@@ -1,0 +1,110 @@
+/* ---------------- HERO ---------------- */
+.services-hero {
+    background: url('image/fashion.jpg') center/cover no-repeat;
+    height: 55vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    color: white;
+}
+
+.services-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-text h1 {
+    margin: 0;
+    font-size: 3rem;
+    letter-spacing: 2px;
+}
+
+.hero-text p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+/* ---------------- SERVICES SECTION ---------------- */
+.services-section {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.services-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+/* Cards Grid */
+.service-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+.service-card {
+    background: white;
+    width: 260px;
+    padding-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.15);
+}
+
+.service-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.service-card h3 {
+    margin: 15px 0 8px;
+    font-size: 1.3rem;
+    color: #111;
+}
+
+.service-card p {
+    padding: 0 15px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* ---------------- MEDIA QUERIES ---------------- */
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 2.4rem;
+    }
+    .hero-text p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-hero {
+        height: 45vh;
+    }
+    .hero-text h1 {
+        font-size: 1.9rem;
+    }
+    .service-card {
+        width: 90%;
+    }
+}

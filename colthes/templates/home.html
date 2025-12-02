@@ -1,0 +1,98 @@
+{% extends "header_footer.html" %}
+{% block base %}
+{% load static %}
+  <link rel="stylesheet" href="{% static 'home.css' %}" />
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Discover Your Style</h1>
+            <p>Explore the latest trends in fashion with our curated collection of premium clothing.</p>
+            <a href="#shop" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+     <br>
+    
+     <br>
+           <div id='felx'>
+        <h1 id='h1'>Featured Collections</h1>
+    <form class="search-container" action="" method='get'>
+      {% csrf_token %}
+      <input type="text" name='search' placeholder="Search..."  />
+      <button type="submit">Search</button>
+    </form>
+    </div>
+    <section class="featured-section" id="shop">
+            <div class="products-grid">
+            {% for data in search %}
+            <div class="product-card">
+               {% if data.image %}
+              <img src="{{ data.image.url }}" alt="{{ data.cloth_name }}">
+               {% endif %}
+                <div class="product-info">
+                    <h3>{{ data.cloth_name }}</h3>
+                    <p>{{ data.fashion_name }}</p>
+                    <p class="price">$:{{ data.price }}</p>
+                    {% if not request.user.is_authenticated %}
+                    <a href="{% url 'login' %}" class="btn">Buy</a>
+                    {% else %}
+                    <a href="{% url 'cart_page' data.id %}" class="btn">Buy</a>
+                    {% endif %}
+                    
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="products-grid">
+            {% for data in i %}
+            <div class="product-card">
+               {% if data.image %}
+              <img src="{{ data.image.url }}" alt="{{ data.cloth_name }}">
+               {% endif %}
+                <div class="product-info">
+                    <h3>{{ data.cloth_name }}</h3>
+                    <p>{{ data.fashion_name }}</p>
+                    <p class="price">$:{{ data.price }}</p>
+                    {% if not request.user.is_authenticated %}
+                    <a href="{% url 'login' %}" class="btn">Buy</a>
+                    {% else %}
+                    <a href="{% url 'cart_page' data.id %}" class="btn">Buy</a>
+                    {% endif %}
+                    
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+      
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <h2>Join the Fashion Revolution</h2>
+        <p>Sign up for exclusive offers and be the first to know about our new arrivals!</p>
+        <a href="#" class="btn">Subscribe Now</a>
+    </section>
+    <br>
+    <br>
+      <section class="featured-section" id="shop">
+        <h2>Best Collections</h2>
+        <div class="products-grid">
+            {% for data in a %}
+            <div class="product-card">
+               {% if data.image %}
+              <img src="{{ data.image.url }}" alt="{{ data.cloth_name }}">
+               {% endif %}
+                <div class="product-info">
+                    <h3>{{ data.cloth_name }}</h3>
+                    <p>{{ data.fashion_name }}</p>
+                    <p class="price">$:{{ data.price }}</p>
+                    <a href="{% url 'cart_page' data.id %}" class="btn">Buy</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+         <br>
+    <br>
+{% endblock base %}
