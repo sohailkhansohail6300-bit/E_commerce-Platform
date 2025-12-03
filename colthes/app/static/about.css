@@ -74,7 +74,7 @@
     .feature {
         flex: 1;
         min-width: 250px;
-        background: #111;
+        background:  linear-gradient(135deg, #757F9A, #1a202c);
         color: white;
         padding: 25px;
         border-radius: 12px;
